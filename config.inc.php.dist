@@ -1,0 +1,3 @@
+<?
+define("POUETAPI_POUET_ROOT_LOCAL","/var/www/pouet/");
+?>
