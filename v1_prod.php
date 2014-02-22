@@ -8,6 +8,7 @@ if($prod)
   PouetCollectPlatforms( $a );
   PouetCollectAwards( $a );
   unset($prod->views);
+  unset($prod->addeduser->lastLogin);
 }
 
 $result = new stdClass();
