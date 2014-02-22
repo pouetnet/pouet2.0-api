@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . _rewrite.php [env=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]  
