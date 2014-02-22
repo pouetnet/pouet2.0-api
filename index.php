@@ -18,6 +18,7 @@ function outputJSON( $object )
 $prod = PouetProd::Spawn( $_GET["id"] ? $_GET["id"] : 1 );
 $a = array(&$prod);
 PouetCollectPlatforms( $a );
+PouetCollectAwards( $a );
 
 outputJSON( $prod );
 ?>
