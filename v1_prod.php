@@ -8,6 +8,7 @@ if($prod)
   PouetCollectPlatforms( $a );
   PouetCollectAwards( $a );
   unset($prod->views);
+  unset($prod->latestip);
   unset($prod->addeduser->lastLogin);
 }
 
