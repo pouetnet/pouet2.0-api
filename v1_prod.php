@@ -7,6 +7,9 @@ if($prod)
   $a = array(&$prod);
   PouetCollectPlatforms( $a );
   PouetCollectAwards( $a );
+
+  $prod->downloadLinks = SQLLib::selectRows(sprintf_esc("select type, link from downloadlinks where prod = %d order by type",$prod->id));
+
   unset($prod->views);
   unset($prod->latestip);
   unset($prod->addeduser->lastLogin);
