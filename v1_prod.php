@@ -9,6 +9,10 @@ if($prod)
   PouetCollectAwards( $a );
 
   $prod->downloadLinks = SQLLib::selectRows(sprintf_esc("select type, link from downloadlinks where prod = %d order by type",$prod->id));
+  
+  $screenshot = find_screenshot( $prod->id );
+  if ($screenshot)
+    $prod->screenshot = POUET_CONTENT_URL . $screenshot;
 
   unset($prod->views);
   unset($prod->latestip);
