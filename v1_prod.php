@@ -14,6 +14,11 @@ if($prod)
   if ($screenshot)
     $prod->screenshot = POUET_CONTENT_URL . $screenshot;
 
+  global $COMPOTYPES;
+  $prod->party_compo_name = $COMPOTYPES[ $prod->party_compo ];
+  foreach($prod->placings as &$p)
+    $p->compo_name = $COMPOTYPES[ $p->compo ];
+    
   unset($prod->views);
   unset($prod->latestip);
   unset($prod->addeduser->lastLogin);
