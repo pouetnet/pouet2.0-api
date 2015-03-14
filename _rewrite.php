@@ -6,6 +6,8 @@ $r = new Rewriter();
 $r->addRules(array(
   "^\/+v1\/prod\/?$" => "v1_prod.php",
   "^\/+v1\/search\/prod\/?$" => "v1_search_prod.php",
+
+  "^\/+adhoc\/prods-from-year\/?$" => "adhoc_prods_year.php",
 ));
 $r->addBootstrap("./functions.inc.php");
 $r->addEntryPoint("POUET_API");
