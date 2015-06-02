@@ -10,7 +10,7 @@ if ($terms)
   $s->AddJoin("left","(select which, count(*) as c from comments group by which) as cmts","cmts.which = prods.id");
   $s->AddOrder("prods.name ASC");
   $s->AddOrder("prods.id");
-  $s->AddLimit(100);
+  $s->SetLimit(100);
   foreach($terms as $term)
     $s->AddWhere(sprintf_esc("prods.name LIKE '%%%s%%'",_like($term)));
   $prods = $s->perform();
