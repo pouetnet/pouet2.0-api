@@ -32,7 +32,7 @@ if ($party)
   
 
   $inv = new BM_Query("prods");
-  $inv->AddWhere( sprintf_esc("(prods.invitation = %d AND prods.invitationyear = %d)",$this->party->id,$this->year,$this->party->id,$this->year) );
+  $inv->AddWhere( sprintf_esc("(prods.invitation = %d AND prods.invitationyear = %d)",$party->id,$year,$party->id,$year) );
   $inv->AddOrder( "prods.addedDate" );
   $result->invitations = $inv->perform();
 
