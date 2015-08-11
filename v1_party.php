@@ -29,7 +29,16 @@ if ($party)
   }
   
   $result->prods = $s->perform();
-  
+  foreach($result->prods as $prod)
+  {
+    global $COMPOTYPES;
+    $prod->party_compo_name = $COMPOTYPES[ $prod->party_compo ];
+    foreach($prod->placings as &$p)
+      $p->compo_name = $COMPOTYPES[ $p->compo ];
+    unset($prod->views);
+    unset($prod->latestip);
+    unset($prod->addeduser->lastLogin);
+  }  
 
   $inv = new BM_Query("prods");
   $inv->AddWhere( sprintf_esc("(prods.invitation = %d AND prods.invitationyear = %d)",$party->id,$year,$party->id,$year) );
