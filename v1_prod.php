@@ -18,6 +18,15 @@ if($prod)
   $prod->party_compo_name = $COMPOTYPES[ $prod->party_compo ];
   foreach($prod->placings as &$p)
     $p->compo_name = $COMPOTYPES[ $p->compo ];
+
+  $s = new BM_Query("credits");
+  $s->AddField("credits.role");
+  $s->AddWhere(sprintf("credits.prodID = %d",$prod->id));
+  $s->Attach(array("credits"=>"userID"),array("users as user"=>"id"));
+  $s->AddOrder("credits.role");
+  $prod->credits = $s->perform();
+  foreach($prod->credits as &$v)
+    unset($v->user->lastLogin);
     
   unset($prod->views);
   unset($prod->latestip);
