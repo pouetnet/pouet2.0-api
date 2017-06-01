@@ -7,6 +7,8 @@ $r->addRules(array(
   "^\/+v1\/prod\/?$" => "v1_prod.php",
   "^\/+v1\/search\/prod\/?$" => "v1_search_prod.php",
 
+  "^\/+v1\/group\/?$" => "v1_group.php",
+
   "^\/+v1\/party\/?$" => "v1_party.php",
 
   "^\/+adhoc\/prods-from-year\/?$" => "adhoc_prods_year.php",
