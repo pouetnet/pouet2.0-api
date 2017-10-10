@@ -11,6 +11,8 @@ $r->addRules(array(
 
   "^\/+v1\/party\/?$" => "v1_party.php",
 
+  "^\/+v1\/stats\/?$" => "v1_stats.php",
+
   "^\/+adhoc\/prods-from-year\/?$" => "adhoc_prods_year.php",
 ));
 $r->addBootstrap("./functions.inc.php");
