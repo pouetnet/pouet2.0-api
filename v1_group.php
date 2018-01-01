@@ -15,10 +15,14 @@ $result = new stdClass();
 if ($group)
 {
   $result->success = true;
-  $result->group = $group;
+  $result->group = $group->ToAPI();
   if ($prods)
   {
-    $result->group->prods = $prods;
+    $result->group["prods"] = array();
+    foreach($prods as $prod)
+    {
+      $result->group["prods"][] = $prod->ToAPI();
+    }
   }
 }
 else
