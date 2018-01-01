@@ -5,6 +5,7 @@ require(POUETAPI_POUET_ROOT_LOCAL . "/bootstrap.inc.php");
 $r = new Rewriter();
 $r->addRules(array(
   "^\/+v1\/prod\/?$" => "v1_prod.php",
+  "^\/+v1\/prod\/comments\/?$" => "v1_prod_comments.php",
   "^\/+v1\/search\/prod\/?$" => "v1_search_prod.php",
 
   "^\/+v1\/group\/?$" => "v1_group.php",
