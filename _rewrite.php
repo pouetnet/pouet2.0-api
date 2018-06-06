@@ -12,6 +12,8 @@ $r->addRules(array(
 
   "^\/+v1\/party\/?$" => "v1_party.php",
 
+  "^\/+v1\/user\/?$" => "v1_user.php",
+
   "^\/+v1\/stats\/?$" => "v1_stats.php",
 
   "^\/+adhoc\/prods-from-year\/?$" => "adhoc_prods_year.php",
