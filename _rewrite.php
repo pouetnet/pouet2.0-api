@@ -2,6 +2,38 @@
 require_once("config.inc.php");
 require(POUETAPI_POUET_ROOT_LOCAL . "/bootstrap.inc.php");
 
+// rate limit
+if ($ephemeralStorage && POUETAPI_RATELIMIT_TIMEFRAME && POUETAPI_RATELIMIT_REQUESTCOUNT)
+{
+  $key = "API_RATE_" . $_SERVER["REMOTE_ADDR"];
+  $rateLimit = array("hits"=>0,"start"=>time());
+  if ($ephemeralStorage->has( $key ))
+  {
+    $rateLimit = $ephemeralStorage->get( $key );
+  }
+  
+  $rateLimit["hits"]++;
+  
+  if (time() - $rateLimit["start"] < POUETAPI_RATELIMIT_TIMEFRAME)
+  {
+    if ($rateLimit["hits"] >= POUETAPI_RATELIMIT_REQUESTCOUNT)
+    {
+      header("HTTP/1.1 429 Too Many Requests");
+      die(sprintf("<html><body><h1>HTTP 429 - Too Many Requests</h1>".
+        "You have exhausted your request limit of %d requests under %d seconds; you can restart in %d seconds.</body></html>",
+        POUETAPI_RATELIMIT_REQUESTCOUNT, POUETAPI_RATELIMIT_TIMEFRAME, POUETAPI_RATELIMIT_TIMEFRAME - (time() - $rateLimit["start"]) ));
+    }
+  }
+  else
+  {
+    $rateLimit["start"] = time();
+    $rateLimit["hits"] = 0;
+  }
+  $ephemeralStorage->set($key, $rateLimit);
+}
+
+// render
+
 $r = new Rewriter();
 $r->addRules(array(
   "^\/+v1\/prod\/?$" => "v1_prod.php",
