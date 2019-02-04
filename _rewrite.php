@@ -3,7 +3,7 @@ require_once("config.inc.php");
 require(POUETAPI_POUET_ROOT_LOCAL . "/bootstrap.inc.php");
 
 // rate limit
-if ($ephemeralStorage && POUETAPI_RATELIMIT_TIMEFRAME && POUETAPI_RATELIMIT_REQUESTCOUNT)
+if ($ephemeralStorage && defined("POUETAPI_RATELIMIT_TIMEFRAME") && defined("POUETAPI_RATELIMIT_REQUESTCOUNT"))
 {
   $key = "API_RATE_" . $_SERVER["REMOTE_ADDR"];
   $rateLimit = array("hits"=>0,"start"=>time());
