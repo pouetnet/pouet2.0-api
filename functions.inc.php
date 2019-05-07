@@ -6,8 +6,12 @@ function outputJSON( $object )
   {
     $callback = $_GET["callback"];
     $out = $callback . "(" . $out . ")";
+    header("Content-type: application/javascript; charset=utf-8");
   }
-  header("Content-type: application/json; charset=utf-8");
+  else
+  {
+    header("Content-type: application/json; charset=utf-8");
+  }
   echo $out;
 }
 
