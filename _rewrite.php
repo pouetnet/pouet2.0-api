@@ -48,6 +48,9 @@ $r->addRules(array(
 
   "^\/+v1\/stats\/?$" => "v1_stats.php",
 
+  "^\/+v1\/front\-page\/latest\-added\/?$" => "v1_frontpage_latestadded.php",
+  "^\/+v1\/front\-page\/latest\-released\/?$" => "v1_frontpage_latestreleased.php",
+
   "^\/+adhoc\/prods-from-year\/?$" => "adhoc_prods_year.php",
 ));
 $r->addBootstrap("./functions.inc.php");

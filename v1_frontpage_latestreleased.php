@@ -1,0 +1,20 @@
+<?
+if (!defined("POUET_API")) exit();
+
+require_once( POUETAPI_POUET_ROOT_LOCAL . "include_pouet_index/index_bootstrap.inc.php");
+
+$box = new PouetBoxIndexLatestReleased();
+$box->Load(true);
+
+$result = new stdClass();
+if ($box->data)
+{
+  $result->success = true;
+  $result->prods = $box->data;
+}
+else
+{
+  $result->error = true;
+}
+output($result);
+?>
