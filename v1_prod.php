@@ -16,9 +16,6 @@ if($prod)
   $s->Attach(array("credits"=>"userID"),array("users as user"=>"id"));
   $s->AddOrder("credits.role");
   $prod->credits = $s->perform();
-    
-  unset($prod->views);
-  unset($prod->latestip);
 }
 
 $result = new stdClass();
