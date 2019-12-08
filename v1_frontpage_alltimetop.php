@@ -10,7 +10,15 @@ $result = new stdClass();
 if ($box->data)
 {
   $result->success = true;
-  $result->prods = $box->data;
+  $result->prods = array();
+  $rank = 1;
+  foreach($box->data as $prod)
+  {
+    $result->prods[] = array(
+      "rank"=>$rank++,
+      "prod"=>$prod
+    );
+  }
 }
 else
 {
