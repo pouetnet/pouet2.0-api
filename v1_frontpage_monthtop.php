@@ -11,6 +11,9 @@ if ($box->data)
 {
   $result->success = true;
   $result->prods = array();
+  PouetCollectPlatforms( $box->data );
+  PouetCollectAwards( $box->data );
+
   $rank = 1;
   foreach($box->data as $prod)
   {
