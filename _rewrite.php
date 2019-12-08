@@ -51,6 +51,8 @@ $r->addRules(array(
 
   "^\/+v1\/front\-page\/latest\-added\/?$" => "v1_frontpage_latestadded.php",
   "^\/+v1\/front\-page\/latest\-released\/?$" => "v1_frontpage_latestreleased.php",
+  "^\/+v1\/front\-page\/alltime\-top\/?$" => "v1_frontpage_alltimetop.php",
+  "^\/+v1\/front\-page\/top\-of\-the\-month\/?$" => "v1_frontpage_monthtop.php",
 
   "^\/+adhoc\/prods-from-year\/?$" => "adhoc_prods_year.php",
 ));
