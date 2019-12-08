@@ -10,7 +10,13 @@ $result = new stdClass();
 if ($box->data)
 {
   $result->success = true;
-  $result->prods = $box->data;
+  $result->prods = array();
+  PouetCollectPlatforms( $box->data );
+  PouetCollectAwards( $box->data );
+  foreach($box->data as $prod)
+  {
+    $result->prods[] = $prod->ToAPI();
+  }
 }
 else
 {

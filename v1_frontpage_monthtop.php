@@ -19,7 +19,7 @@ if ($box->data)
   {
     $result->prods[] = array(
       "rank"=>$rank++,
-      "prod"=>$prod
+      "prod"=>$prod->ToAPI()
     );
   }
 }
