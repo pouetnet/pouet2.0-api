@@ -54,6 +54,8 @@ $r->addRules(array(
   "^\/+v1\/front\-page\/alltime\-top\/?$" => "v1_frontpage_alltimetop.php",
   "^\/+v1\/front\-page\/top\-of\-the\-month\/?$" => "v1_frontpage_monthtop.php",
 
+  "^\/+v1\/enums\/platforms\/?$" => "v1_enums_platforms.php",
+
   "^\/+adhoc\/prods-from-year\/?$" => "adhoc_prods_year.php",
 ));
 $r->addBootstrap("./functions.inc.php");
