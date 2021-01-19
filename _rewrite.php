@@ -46,6 +46,8 @@ $r->addRules(array(
   "^\/+v1\/search\/party\/?$" => "v1_search_party.php",
 
   "^\/+v1\/user\/?$" => "v1_user.php",
+  
+  "^\/+v1\/board\/?$" => "v1_board.php",
 
   "^\/+v1\/stats\/?$" => "v1_stats.php",
 
