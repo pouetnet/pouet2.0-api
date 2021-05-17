@@ -2,6 +2,14 @@
 if (!defined("POUET_API")) exit();
 
 $prod = $_GET["id"] ? PouetProd::Spawn((int)$_GET["id"]) : null;
+if(isset($_GET["random"])){
+  $prod = null;
+  $max_prod = 89000;
+  while(!$prod){
+    $prod = PouetProd::Spawn(rand(1, $max_prod));
+    if(!$prod){ usleep(100000); } // 100ms
+  }
+}
 if($prod)
 {
   $a = array(&$prod);
