@@ -1,7 +1,22 @@
 <?
 if (!defined("POUET_API")) exit();
 
-$prod = $_GET["id"] ? PouetProd::Spawn((int)$_GET["id"]) : null;
+$prod = null;
+if ($_GET["random"])
+{
+  $query = new BM_Query( "prods" );
+  $query->addExtendedFields();
+  $query->AddOrder("RAND()");
+  $query->SetLimit(1);
+  $prods = $query->perform();
+
+  $prod = reset($prods);
+}
+else
+{
+  $prod = $_GET["id"] ? PouetProd::Spawn((int)$_GET["id"]) : null;
+}
+
 if($prod)
 {
   $a = array(&$prod);
