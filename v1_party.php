@@ -29,6 +29,15 @@ if ($party)
     }
   }
   */
+  
+  $links = SQLLib::selectRow(sprintf("SELECT * FROM `partylinks` WHERE party = %d and year = %d",$party->id,$year));
+  if ($links)
+  {
+    unset($links->id);
+    unset($links->party);
+    unset($links->year);
+    $result->party["links"] = $links;
+  }
 
   $prods = $s->perform();
   PouetCollectPlatforms($prods);
