@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("POUET_API")) exit();
 
 $user = $_GET["id"] ? PouetUser::Spawn((int)$_GET["id"]) : null;

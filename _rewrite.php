@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("config.inc.php");
 require(POUETAPI_POUET_ROOT_LOCAL . "/bootstrap.inc.php");
 

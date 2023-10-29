@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("POUET_API")) exit();
 
 $prod = $_GET["id"] ? PouetProd::Spawn((int)$_GET["id"]) : null;

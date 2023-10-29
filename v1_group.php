@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("POUET_API")) exit();
 
 $group = $_GET["id"] ? PouetGroup::Spawn((int)$_GET["id"]) : null;

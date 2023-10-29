@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("POUET_API")) exit();
 
 $party = PouetParty::spawn($_GET["id"]);

@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("POUET_API")) exit();
 
 $board = PouetBoard::spawn($_GET["id"]);

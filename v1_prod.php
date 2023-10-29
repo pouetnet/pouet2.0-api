@@ -1,8 +1,8 @@
-<?
+<?php
 if (!defined("POUET_API")) exit();
 
 $prod = null;
-if ($_GET["random"])
+if (@$_GET["random"])
 {
   $query = new BM_Query( "prods" );
   $query->addExtendedFields();
@@ -14,30 +14,29 @@ if ($_GET["random"])
 }
 else
 {
-  $prod = $_GET["id"] ? PouetProd::Spawn((int)$_GET["id"]) : null;
-}
-
-if($prod)
-{
-  $a = array(&$prod);
-  PouetCollectPlatforms( $a );
-  PouetCollectAwards( $a );
-
-  $prod->downloadLinks = SQLLib::selectRows(sprintf_esc("select type, link from downloadlinks where prod = %d order by type",$prod->id));
-  
-  $s = new BM_Query("credits");
-  $s->AddField("credits.role");
-  $s->AddWhere(sprintf("credits.prodID = %d",$prod->id));
-  $s->Attach(array("credits"=>"userID"),array("users as user"=>"id"));
-  $s->AddOrder("credits.role");
-  $prod->credits = $s->perform();
+  $prod = @$_GET["id"] ? PouetProd::Spawn((int)$_GET["id"]) : null;
 }
 
 $result = new stdClass();
 if ($prod)
 {
   $result->success = true;
+
+  $a = array(&$prod);
+  PouetCollectPlatforms( $a );
+  PouetCollectAwards( $a );
+
   $result->prod = $prod->ToAPI();
+
+  $result->prod["downloadLinks"] = SQLLib::selectRows(sprintf_esc("select type, link from downloadlinks where prod = %d order by type",$prod->id));
+  
+  $s = new BM_Query();
+  $s->AddTable("credits");
+  $s->AddField("credits.role");
+  $s->AddWhere(sprintf("credits.prodID = %d",$prod->id));
+  $s->Attach(array("credits"=>"userID"),array("users as user"=>"id"));
+  $s->AddOrder("credits.role");
+  $result->prod["credits"] = $s->perform();
 }
 else
 {

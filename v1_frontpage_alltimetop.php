@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("POUET_API")) exit();
 
 require_once( POUETAPI_POUET_ROOT_LOCAL . "include_pouet_index/index_bootstrap.inc.php");
