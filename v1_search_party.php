@@ -1,13 +1,13 @@
 <?php
 if (!defined("POUET_API")) exit();
 
-$terms = split_search_terms( $_GET["q"] );
+$terms = split_search_terms( @$_GET["q"] );
 if ($terms)
 {
   $s = new BM_Query("parties");
   $s->AddField("p.c as prods");
   $s->AddJoin("left","(select party, count(*) as c from prods group by party) as p","p.party = parties.id");
-  $s->AddOrder(sprintf_esc("if(parties.name='%s',1,2)",$_GET["what"]));
+  $s->AddOrder(sprintf_esc("if(parties.name='%s',1,2)",@$_GET["q"]));
   $s->AddOrder("parties.name ASC");
   $s->SetLimit(100);
   foreach($terms as $term)

@@ -23,7 +23,7 @@ if($prods)
   {
     unset($prod->views);
     unset($prod->latestip);
-    unset($prod->addeduser->lastLogin);
+    unset($prod->addedUser->lastLogin);
   }
 }
 
