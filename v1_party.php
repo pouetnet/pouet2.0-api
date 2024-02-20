@@ -2,7 +2,7 @@
 if (!defined("POUET_API")) exit();
 
 $party = PouetParty::spawn($_GET["id"]);
-$year = (int)$_GET["year"];
+$year = (int)@$_GET["year"];
 
 $result = new stdClass();
 if ($party)
