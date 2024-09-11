@@ -1,4 +1,4 @@
-pouet2.0-api
-============
+Pouët 2.0 API
+=============
 
 Trumpets for everyone!
